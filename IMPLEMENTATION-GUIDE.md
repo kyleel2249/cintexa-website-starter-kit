@@ -4,199 +4,130 @@
 
 This document provides the complete technical roadmap for building the CINTEXA AI-Powered Business Commerce Technology platform website. The deliverables include:
 
-1. **Working HTML Prototype** — Interactive 3D demonstration (see `cintexa-prototype.html`)
-2. **Production Architecture** — Full Next.js 14 project structure
-3. **Design System** — Tokens, Tailwind config, UI components
-4. **3D Components** — React Three Fiber scenes
-5. **SEO & Performance** — Metadata, Schema.org, optimization targets
-6. **Implementation Phases** — 10-phase roadmap with code patterns
+1. **Working HTML Prototype** — Interactive 3D demonstration (single file)
+2. **Next.js Architecture** — Production-ready project structure
+3. **Design Tokens** — Centralized styling system
+4. **Component Library** — React/TypeScript components with Three.js integration
+5. **SEO Configuration** — Complete search engine optimization setup
+6. **This Guide** — Step-by-step implementation instructions
 
 ---
 
-## Phase 1: Foundation (Days 1-3)
+## Phase 1: Foundation Setup (Days 1-3)
 
-### 1.1 Project Initialization
+### 1.1 Initialize Project
 
 ```bash
-npx create-next-app@latest cintexa-website --typescript --tailwind --app --src-dir
+# Create Next.js project with App Router
+npx create-next-app@latest cintexa-website --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+
+# Navigate to project
 cd cintexa-website
-npm install three @react-three/fiber @react-three/drei gsap @gsap/react framer-motion zustand react-hook-form zod @hookform/resolvers lucide-react clsx tailwind-merge class-variance-authority
-npm install -D @types/three prettier prettier-plugin-tailwindcss @tailwindcss/typography tailwindcss-animate
+
+# Install core dependencies
+npm install three @react-three/fiber @react-three/drei
+npm install gsap @gsap/react
+npm install framer-motion
+npm install zustand
+npm install react-hook-form zod @hookform/resolvers
+npm install lucide-react
+npm install clsx tailwind-merge
+npm install @vercel/analytics @vercel/speed-insights
+
+# Install dev dependencies
+npm install -D @types/three @tailwindcss/typography tailwindcss-animate prettier prettier-plugin-tailwindcss
 ```
 
-### 1.2 Copy Design System
+### 1.2 Configure TypeScript
 
-- Place `design-tokens.css` in `src/styles/`
-- Replace `tailwind.config.ts` with the provided version
-- Import design tokens in `globals.css`
+Update `tsconfig.json` with strict settings and path aliases as shown in the architecture.
 
-### 1.3 Fonts
+### 1.3 Configure Tailwind CSS
 
-```tsx
-// app/layout.tsx
-import { Inter, Space_Grotesk } from "next/font/google";
+Replace `tailwind.config.ts` with the provided design token configuration.
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
-```
+Update `src/app/globals.css` to import design tokens and set base styles.
 
-### 1.4 Base Layout & Metadata
+### 1.4 Fonts & Root Layout
 
-Use `config/seo.ts` for defaultMetadata and page-specific metadata.
+Use Space Grotesk for display and Inter for body. Apply CSS variables from design tokens.
+
+### 1.5 Environment Variables
+
+Create `.env.local` with the variables listed in CINTEXA-ARCHITECTURE.md.
 
 ---
 
 ## Phase 2: Core Components (Days 4-8)
 
-### 2.1 UI Library
-
-Copy `components/ui/index.ts` and split into individual files if preferred (Button, Card, Badge, GlassPanel, Input, SectionHeader, LoadingSpinner).
-
-### 2.2 Utilities & Hooks
-
+Copy and adapt:
+- `components/ui/index.ts` (Button, Card, Badge, GlassPanel, SectionHeader, Input, LoadingSpinner)
 - `lib/utils/cn.ts`
-- `lib/hooks/index.ts` (useScrollProgress, useMousePosition, useReducedMotion, useInView, useMediaQuery, etc.)
-
-### 3. Navigation
-
-Build Navbar with glass morphism, mobile menu, and active states.
+- `lib/hooks/index.ts`
+- Navigation components (Navbar, MobileMenu)
 
 ---
 
 ## Phase 3: Homepage (Days 9-15)
 
-### 3.1 HeroSection
+Implement:
+- HeroSection (with lazy BusinessCore)
+- SolutionsSection (10 cards)
+- Ecosystem, AI, OS, Diagnostic, CTA, Footer sections
 
-Use the provided `HeroSection.tsx` with lazy-loaded BusinessCore.
-
-### 3.2 SolutionsSection
-
-Use the provided 10-card grid with motion and glass cards.
-
-### 3.3 Additional Sections
-
-- Ecosystem / Business Core visualization
-- AI Agents section
-- Operating System layers
-- Diagnostic metrics
-- CTA
-- Footer
+Use Framer Motion for scroll reveals and reduced-motion support.
 
 ---
 
 ## Phase 4: 3D Enhancement (Days 16-20)
 
-### 4.1 BusinessCore
-
-The provided `BusinessCore.tsx` includes:
-- Central distorting core with rings
-- 12 orbiting system nodes
-- Connection lines + data particles
-- Instanced particle field
-- Hover interactions
-- Performance-friendly settings
-
-### 4.2 Optimization Tips
-
-- Use AdaptiveDpr from drei
-- Reduce particle count on mobile
-- Prefer instancing
-- Dispose geometries/materials properly
+Use the provided BusinessCore.tsx. Optimize with AdaptiveDpr, lower particle counts on mobile, and proper disposal.
 
 ---
 
 ## Phase 5: Inner Pages (Days 21-28)
 
-Create pages under `app/(marketing)/` for:
-- Solutions (and sub-pages)
-- Services
-- Industries
-- Technology
-- Case Studies
-- Resources / Blog
-- About
-- Contact
-- Start Project
-
-Reuse SectionHeader, Card, and glass panels for consistency.
+Build all marketing pages under the App Router groups defined in the architecture.
 
 ---
 
 ## Phase 6: Forms & Backend (Days 29-32)
 
-### Forms
-- ProjectIntakeForm
-- ContactForm
-- DiagnosticForm
-
-Use React Hook Form + Zod schemas derived from `types/index.ts`.
-
-### API Routes
-- `/api/contact`
-- `/api/diagnostic`
-- `/api/assistant`
-
-Add rate limiting, honeypot, and basic validation.
+Implement forms with React Hook Form + Zod. Create API routes for contact, diagnostic, and assistant with validation and rate limiting.
 
 ---
 
 ## Phase 7: SEO & Performance (Days 33-35)
 
-- Apply metadata from `config/seo.ts`
-- Generate sitemap.xml and robots.txt
-- Add Schema.org JSON-LD (Organization, SoftwareApplication, FAQ, Service)
-- Optimize images with next/image
-- Analyze with Lighthouse and bundle analyzer
-
-**Targets**
-- Lighthouse ≥ 90
-- FCP < 1.5s
-- LCP < 2.5s
-- CLS < 0.1
+Apply metadata and Schema.org generators from config/seo.ts. Target Lighthouse 90+.
 
 ---
 
 ## Phase 8: AI Assistant (Days 36-38)
 
-Floating AI assistant (JAY) with chat interface.
-- Use the floating button pattern from the prototype
-- Integrate with your preferred LLM backend
-- Keep conversation context limited for privacy
+Add floating AI assistant using the pattern from the HTML prototype.
 
 ---
 
 ## Phase 9: Testing & QA (Days 39-42)
 
-### Checklist
-- [ ] Cross-browser (Chrome, Firefox, Safari, Edge)
-- [ ] Responsive (320px → 1440px+)
-- [ ] Keyboard navigation & ARIA
-- [ ] Reduced motion preference
-- [ ] Color contrast
-- [ ] Form validation & error states
-- [ ] 3D performance on mid-tier devices
-- [ ] SEO meta & structured data
-- [ ] Analytics events
+Full cross-browser, responsive, accessibility, and performance testing.
 
 ---
 
 ## Phase 10: Deployment (Day 43+)
 
-### Vercel (Recommended)
-```bash
-npm run build
-vercel --prod
-```
+Deploy to Vercel. Configure domain, analytics, monitoring, and optional CMS.
 
-### Environment Variables
-Set all keys from the Architecture document.
+---
 
-### Post-Deploy
-- Custom domain + HTTPS
-- Monitoring (Vercel Analytics / Speed Insights)
-- Error tracking (Sentry optional)
-- CMS integration if needed (Sanity, Contentful, or Strapi) for blog/case studies
-- A/B Testing: Use Vercel Edge Config or Optimizely
+## Monitoring & Maintenance
+
+- **Monitoring**: Use Vercel Analytics + Speed Insights
+- **Error Tracking**: Integrate Sentry for runtime errors
+- **Performance**: Regular Lighthouse audits
+- **Content Updates**: Use a CMS (Sanity, Contentful, or Strapi) for blog/case studies
+- **A/B Testing**: Use Vercel Edge Config or Optimizely
 
 ---
 
