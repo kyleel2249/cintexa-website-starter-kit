@@ -1,0 +1,282 @@
+/* ============================================================
+   CINTEXA DESIGN TOKENS
+   Centralized design system for the entire platform
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* Color Palette */
+    --cx-bg-deep: #030712;
+    --cx-bg-dark: #0a0f1e;
+    --cx-bg-mid: #111827;
+    --cx-bg-light: #1f2937;
+    --cx-surface: rgba(17, 24, 39, 0.7);
+    --cx-surface-glass: rgba(17, 24, 39, 0.4);
+    --cx-border: rgba(59, 130, 246, 0.15);
+    --cx-border-glow: rgba(59, 130, 246, 0.3);
+
+    /* Primary - Electric Blue */
+    --cx-primary-50: #eff6ff;
+    --cx-primary-100: #dbeafe;
+    --cx-primary-200: #bfdbfe;
+    --cx-primary-300: #93c5fd;
+    --cx-primary-400: #60a5fa;
+    --cx-primary-500: #3b82f6;
+    --cx-primary-600: #2563eb;
+    --cx-primary-700: #1d4ed8;
+    --cx-primary-800: #1e40af;
+    --cx-primary-900: #1e3a8a;
+    --cx-primary-glow: rgba(59, 130, 246, 0.4);
+
+    /* Accent - Cyan */
+    --cx-accent-50: #ecfeff;
+    --cx-accent-100: #cffafe;
+    --cx-accent-200: #a5f3fc;
+    --cx-accent-300: #67e8f9;
+    --cx-accent-400: #22d3ee;
+    --cx-accent-500: #06b6d4;
+    --cx-accent-600: #0891b2;
+    --cx-accent-700: #0e7490;
+    --cx-accent-glow: rgba(6, 182, 212, 0.3);
+
+    /* Secondary - Purple */
+    --cx-secondary-50: #f5f3ff;
+    --cx-secondary-100: #ede9fe;
+    --cx-secondary-200: #ddd6fe;
+    --cx-secondary-300: #c4b5fd;
+    --cx-secondary-400: #a78bfa;
+    --cx-secondary-500: #8b5cf6;
+    --cx-secondary-600: #7c3aed;
+    --cx-secondary-700: #6d28d9;
+    --cx-secondary-glow: rgba(139, 92, 246, 0.3);
+
+    /* Semantic Colors */
+    --cx-success: #10b981;
+    --cx-warning: #f59e0b;
+    --cx-error: #ef4444;
+    --cx-info: #3b82f6;
+
+    /* Text Colors */
+    --cx-text-primary: #f8fafc;
+    --cx-text-secondary: #94a3b8;
+    --cx-text-muted: #64748b;
+    --cx-text-inverse: #0f172a;
+
+    /* Typography Scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 3.75rem;
+    --text-7xl: 4.5rem;
+    --text-8xl: 6rem;
+    --text-9xl: 8rem;
+
+    /* Font Families */
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Font Weights */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-black: 900;
+
+    /* Line Heights */
+    --leading-none: 1;
+    --leading-tight: 1.25;
+    --leading-snug: 1.375;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.625;
+    --leading-loose: 2;
+
+    /* Letter Spacing */
+    --tracking-tighter: -0.05em;
+    --tracking-tight: -0.025em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.025em;
+    --tracking-wider: 0.05em;
+    --tracking-widest: 0.1em;
+
+    /* Spacing Scale */
+    --space-0: 0;
+    --space-px: 1px;
+    --space-0-5: 0.125rem;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+    --space-40: 10rem;
+    --space-48: 12rem;
+    --space-64: 16rem;
+
+    /* Border Radius */
+    --radius-none: 0;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-3xl: 2rem;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+    --shadow-glow-lg: 0 0 60px rgba(59, 130, 246, 0.2);
+
+    /* Glass Effect */
+    --glass-bg: rgba(17, 24, 39, 0.4);
+    --glass-border: rgba(59, 130, 246, 0.15);
+    --glass-blur: 20px;
+
+    /* Animation Durations */
+    --duration-instant: 0ms;
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+    --duration-slower: 700ms;
+    --duration-dramatic: 1000ms;
+
+    /* Easing Functions */
+    --ease-linear: linear;
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* 3D Depth */
+    --perspective-near: 600px;
+    --perspective-normal: 1200px;
+    --perspective-far: 2000px;
+    --card-tilt: 8deg;
+    --card-tilt-max: 12deg;
+
+    /* Z-Index Scale */
+    --z-base: 0;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal-backdrop: 400;
+    --z-modal: 500;
+    --z-popover: 600;
+    --z-tooltip: 700;
+    --z-toast: 800;
+    --z-loading: 9000;
+  }
+}
+
+@layer components {
+  /* Glass Panel */
+  .glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--cx-primary-light), var(--cx-accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow Border */
+  .glow-border {
+    border-color: var(--cx-border-glow);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+  }
+
+  /* Data Stream Animation */
+  .data-stream {
+    background: linear-gradient(90deg, transparent, var(--cx-primary-glow), transparent);
+    animation: dataFlow 3s linear infinite;
+  }
+
+  @keyframes dataFlow {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+    100% { opacity: 0.2; }
+  }
+
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { 
+      box-shadow: 0 0 60px rgba(59, 130, 246, 0.3), 0 0 120px rgba(59, 130, 246, 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 80px rgba(59, 130, 246, 0.4), 0 0 160px rgba(59, 130, 246, 0.15);
+    }
+  }
+
+  /* Magnetic Button Effect */
+  .magnetic-btn {
+    transition: transform 0.3s var(--ease-out-expo);
+  }
+
+  /* Card 3D Tilt */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+
+  .card-3d:hover {
+    transform: translateY(-8px) rotateX(2deg);
+  }
+
+  /* Scroll Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .pulse-glow,
+    .data-stream {
+      animation: none;
+    }
+  }
+}
