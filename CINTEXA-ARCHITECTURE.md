@@ -90,59 +90,92 @@ cintexa-website/
 │   ├── gsap/
 │   │   ├── scrollTrigger.ts
 │   │   └── animations.ts
-│   ├── hooks/
-│   │   └── index.ts
 │   ├── utils/
-│   │   └── cn.ts
-│   └── api/
-│       └── client.ts
-├── config/
-│   ├── seo.ts
-│   ├── navigation.ts
-│   └── site.ts
+│   │   ├── cn.ts
+│   │   ├── validation.ts
+│   │   └── formatters.ts
+│   └── hooks/
+│       ├── useScrollProgress.ts
+│       ├── useMousePosition.ts
+│       ├── useReducedMotion.ts
+│       ├── useInView.ts
+│       └── useMediaQuery.ts
 ├── types/
-│   └── index.ts
+│   ├── index.ts
+│   ├── business.ts
+│   ├── forms.ts
+│   └── three.ts
+├── styles/
+│   ├── design-tokens.css
+│   ├── animations.css
+│   └── components.css
 ├── public/
 │   ├── images/
-│   ├── models/
+│   ├── models/                   # 3D models (GLB/GLTF)
+│   ├── textures/
 │   └── fonts/
-├── design-tokens.css
+├── config/
+│   ├── site.ts
+│   ├── seo.ts
+│   └── navigation.ts
+├── middleware.ts
+├── next.config.js
 ├── tailwind.config.ts
-├── package.json
-└── README.md
+├── tsconfig.json
+└── package.json
 ```
 
 ## Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + Design Tokens
-- **3D Graphics**: Three.js / React Three Fiber
+- **Language**: TypeScript 5.x
+- **Styling**: Tailwind CSS 3.4
+- **3D**: Three.js + React Three Fiber + Drei
 - **Animation**: GSAP + ScrollTrigger
-- **UI Components**: Custom glassmorphism design system
-- **State**: React hooks + Context
 - **Forms**: React Hook Form + Zod
-- **SEO**: next-seo / Metadata API
+- **State**: Zustand
+- **Analytics**: Vercel Analytics (or Plausible)
 
-## Design System
+## Installation
 
-Glassmorphism aesthetic with deep navy/black backgrounds, cyan/teal accents, and subtle particle effects. Design tokens defined in `design-tokens.css`.
+```bash
+npx create-next-app@latest cintexa-website --typescript --tailwind --app
+npm install three @react-three/fiber @react-three/drei
+npm install gsap @gsap/react
+npm install zustand react-hook-form zod @hookform/resolvers
+npm install @types/three
+```
 
-## Key Features
+## Environment Variables
 
-1. Immersive 3D hero experiences
-2. Interactive business ecosystem visualization
-3. AI-powered diagnostic tools
-4. Solution showcases (CRM, Ecommerce, BI, Automation)
-5. Industry-specific pages
-6. Case study system
-7. Project intake & contact forms
-8. AI assistant integration
+```env
+# .env.local
+NEXT_PUBLIC_SITE_URL=https://cintexa.com
+NEXT_PUBLIC_API_URL=https://api.cintexa.com
+CONTACT_FORM_WEBHOOK_URL=
+DIAGNOSTIC_API_KEY=
+AI_ASSISTANT_API_KEY=
+```
+
+## Development
+
+```bash
+npm run dev      # Start development server
+npm run build    # Production build
+npm run lint     # ESLint check
+npm run type-check # TypeScript check
+```
 
 ## Performance Targets
 
-- Lighthouse score ≥ 90
-- First Contentful Paint < 1.5s
-- Largest Contentful Paint < 2.5s
-- Cumulative Layout Shift < 0.1
-- 3D scenes optimized with instancing and LOD
+- Lighthouse Score: 90+ (all categories)
+- First Contentful Paint: < 1.5s
+- Largest Contentful Paint: < 2.5s
+- Time to Interactive: < 3.5s
+- Cumulative Layout Shift: < 0.1
+
+## Deployment
+
+- **Primary**: Vercel (recommended for Next.js)
+- **CDN**: Cloudflare (for static assets)
+- **3D Assets**: Optimized GLB files with Draco compression
