@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINTEXA | AI-Powered Business Commerce Technology</title>
+    <meta name="description" content="CINTEXA connects AI, commerce, software and business operations into intelligent digital systems.">
+    <style>
+        :root {
+            --cx-bg-deep: #030712;
+            --cx-bg-dark: #0a0f1e;
+            --cx-primary: #3b82f6;
+            --cx-accent: #06b6d4;
+            --cx-text-primary: #f8fafc;
+            --cx-text-secondary: #94a3b8;
+            --cx-border: rgba(59, 130, 246, 0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--cx-bg-deep);
+            color: var(--cx-text-primary);
+            overflow-x: hidden;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding: 2rem;
+        }
+        #canvas-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid var(--cx-border);
+            background: rgba(17,24,39,0.4);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p.lead {
+            font-size: 1.25rem;
+            color: var(--cx-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            box-shadow: 0 0 40px rgba(59,130,246,0.3);
+        }
+        .btn-secondary {
+            background: rgba(17,24,39,0.6);
+            border: 1px solid var(--cx-border);
+            color: white;
+        }
+        .stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--cx-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: rgba(17,24,39,0.5);
+            border: 1px solid var(--cx-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(59,130,246,0.4);
+        }
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            color: var(--cx-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--cx-text-secondary);
+            border-top: 1px solid var(--cx-border);
+        }
+        .ai-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(59,130,246,0.4);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas-bg"></canvas>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <span style="width:6px;height:6px;background:#06b6d4;border-radius:50%;display:inline-block;"></span>
+                AI-Powered Business Commerce Technology
+            </div>
+            <h1>The Technology Behind <span class="gradient-text">Better Business.</span></h1>
+            <p class="lead">CINTEXA connects AI, commerce, software and business operations into intelligent digital systems built to help businesses operate, sell, automate and make better decisions.</p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">Build Your Business System</a>
+                <a href="#solutions" class="btn btn-secondary">Explore CINTEXA</a>
+            </div>
+            <div class="stats">
+                <div class="stat"><div class="stat-value">Operate</div><div class="stat-label">Systems</div></div>
+                <div class="stat"><div class="stat-value">Sell</div><div class="stat-label">Commerce</div></div>
+                <div class="stat"><div class="stat-value">Engage</div><div class="stat-label">Customers</div></div>
+                <div class="stat"><div class="stat-value">Automate</div><div class="stat-label">Workflows</div></div>
+                <div class="stat"><div class="stat-value">Analyze</div><div class="stat-label">Intelligence</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions">
+        <div class="section-header">
+            <h2>One Technology Layer. Many Business Functions.</h2>
+            <p style="color:var(--cx-text-secondary)">Integrated tools that work together to power your entire operation.</p>
+        </div>
+        <div class="cards">
+            <div class="card"><h3>CRM</h3><p>Manage relationships, contacts, leads, customers and opportunities in one connected system.</p></div>
+            <div class="card"><h3>Sales</h3><p>Manage pipelines, deals, quotations, sales activity and revenue with intelligent tracking.</p></div>
+            <div class="card"><h3>Marketing</h3><p>Manage campaigns, leads, customer segments and automated communication at scale.</p></div>
+            <div class="card"><h3>E-Commerce</h3><p>Build and manage digital commerce experiences that convert visitors into customers.</p></div>
+            <div class="card"><h3>Inventory</h3><p>Track products, stock, movement and availability across all your channels.</p></div>
+            <div class="card"><h3>Accounting</h3><p>Monitor financial activity, reporting and business performance in real-time.</p></div>
+            <div class="card"><h3>Customer Experience</h3><p>Centralize customer communication, support and loyalty programs.</p></div>
+            <div class="card"><h3>AI & Automation</h3><p>Automate repetitive work and deploy intelligent AI agents across your business.</p></div>
+            <div class="card"><h3>Business Intelligence</h3><p>Turn business data into useful insights and actionable decisions.</p></div>
+            <div class="card"><h3>Custom Software</h3><p>Build technology around specific business requirements and workflows.</p></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 CINTEXA — AI-Powered Business Commerce Technology</p>
+    </footer>
+
+    <div class="ai-float" title="AI Assistant">AI</div>
+
+    <script>
+        // Simple particle network background
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.6)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            // connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 * (1 - dist/120)})`;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CINTEXA Business Platform","applicationCategory":"BusinessApplication","description":"AI-powered business commerce technology platform with CRM, e-commerce, automation, and business intelligence.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+</body>
+</html>
